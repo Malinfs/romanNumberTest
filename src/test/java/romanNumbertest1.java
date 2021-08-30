@@ -52,13 +52,55 @@ public class romanNumbertest1 {
     void shouldConverteXVto15(){
         assertEquals("XV",toRoman(15));
     }
+    @Test
+    void shouldConverteIXXto19(){
+        assertEquals("IXX",toRoman(19));
+    }
+    @Test
+    void shouldConverteXXto20(){
+        assertEquals("XX",toRoman(20));
+    }
+    @Test
+    void shouldConverteXXIVto24(){
+        assertEquals("XXIV",toRoman(24));
+    }
+    @Test
+    void shouldConverteXXXto30(){
+        assertEquals("XXX",toRoman(30));
+    }
+    @Test
+    void shouldConverteXXXVIto36(){
+        assertEquals("XXXVI",toRoman(36));
+    }
+    @Test
+    void shouldConverteXXXIXto39(){
+        assertEquals("XXXIX",toRoman(39));
+    }
+
 
 
     private String toRoman(int number) {
         String result="";
 
         while (number> 0){
-            if (number>9 && number<19){
+            if (number==39){
+                result += "XXXIX";
+                number -= 39;
+            }
+            if (number>29 && number<39){ //romersk tall 30
+                result += "XXX";
+                number -= 30;
+            }
+
+            if(number>19 && number<29){ //romersk tall 20
+                result += "XX";
+                number -= 20;
+            }
+            if(number==19){
+                result +="IXX";
+                number -= 19;
+            }
+            if (number>9 && number<19){ //romersk tall 10
                 result+="X";
                 number-=10;
             }
@@ -67,7 +109,7 @@ public class romanNumbertest1 {
                 number-=9;
             }
 
-            if (number>4 && number<9){
+            if (number>4 && number<9){ //romersk tall 5
                 result +="V";
                 number-=5;
             }
