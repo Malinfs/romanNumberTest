@@ -40,11 +40,27 @@ public class romanNumbertest1 {
     void shouldConverteIXto9(){
         assertEquals("IX",toRoman(9));
     }
+    @Test
+    void shouldConverteXto10(){
+        assertEquals("X",toRoman(10));
+    }
+    @Test
+    void shouldConverteXIto11(){
+        assertEquals("XI",toRoman(11));
+    }
+    @Test
+    void shouldConverteXVto15(){
+        assertEquals("XV",toRoman(15));
+    }
 
 
     private String toRoman(int number) {
         String result="";
 
+        if (number>=10){
+            result="X";
+            number-=10;
+        }
         if (number==9){
             result="IX";
             number-=9;
@@ -59,6 +75,7 @@ public class romanNumbertest1 {
             result="IV";
             number -=4;
         }
+
 
         for (int i = 0; i < number; i++) {
             result += "I";
